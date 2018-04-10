@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cl.emendare.starterkit.domain.security.entity">
+    <class name="SecureMethod" table="secure_method">
+        <!--<id name="id" type="integer" column="sme_id">
+            <generator class="identity" />
+        </id>-->
+        <composite-id name="method" class="Method">
+            <key-property name="service" column="sme_service" type="integer"/>
+            <key-property name="method" column="sme_method" type="integer"/>
+            <generator class="assigned" />
+        </composite-id>
+        <property name="name" type="string" column="sme_name" />
+        <property name="detail" type="string" column="sme_description" />
+        <!--<property name="service" type="integer" column="sme_service" />
+        <property name="method" type="integer" column="sme_method" />-->
+    </class>
+</hibernate-mapping>

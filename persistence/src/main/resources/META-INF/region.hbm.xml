@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cl.emendare.StarterKit.domain.entity">
+    <class name="Region" table="region">
+        <id name="id" type="integer" column="reg_id">
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string" column="reg_name" />
+        <many-to-one name="country" column="reg_country" class="Country" lazy="false" fetch="select" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cl.emendare.starterkit.domain.security.entity">
+    <class name="Token" table="token">
+        <id name="id" type="long" column="tok_id">
+            <generator class="identity" />
+        </id>
+        <property name="token" type="string" column="tok_token" />
+        <property name="dateTime" type="timestamp" column="tok_datetime" />
+        <property name="type" type="integer" column="tok_type" />
+        <many-to-one name="user" column="tok_user" class="User" lazy="false" fetch="select" />
+        <property name="status" type="integer" column="tok_status" />
+    </class>
+</hibernate-mapping>

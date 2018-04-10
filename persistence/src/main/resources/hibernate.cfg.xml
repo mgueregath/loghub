@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.default_schema">${default.schema}</property>
+        <property name="hibernate.archive.autodetection">hbm</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">${hbm2ddl.auto}</property>
+        <property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="hibernate.connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
+        <property name="hibernate.hikari.dataSourceClassName">org.postgresql.ds.PGSimpleDataSource</property>
+        <property name="hibernate.hikari.minimumIdle">5</property>
+        <property name="hibernate.hikari.maximumPoolSize">100</property>
+        <property name="hibernate.hikari.dataSource.serverName">${dataSource.serverName}</property>
+        <property name="hibernate.hikari.dataSource.portNumber">${dataSource.portNumber}</property>
+        <property name="hibernate.hikari.dataSource.databaseName">${dataSource.databaseName}</property>
+        <property name="hibernate.hikari.dataSource.user">${dataSource.user}</property>
+        <property name="hibernate.hikari.dataSource.password">${dataSource.password}</property>
+        <property name="hibernate.max_fetch_depth">0</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping resource="META-INF/secure-method.hbm.xml"/>
+        <mapping resource="META-INF/user.hbm.xml"/>
+        <mapping resource="META-INF/token.hbm.xml"/>
+        <mapping resource="META-INF/role.hbm.xml"/>
+        <mapping resource="META-INF/email.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
