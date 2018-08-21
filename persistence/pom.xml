@@ -19,11 +19,6 @@
             <artifactId>domain</artifactId>
         </dependency>
         <dependency>
-            <groupId>cl.emendare</groupId>
-            <artifactId>exceptions</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.2.9.Final</version>

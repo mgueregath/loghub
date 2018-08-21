@@ -7,7 +7,6 @@
     <packaging>pom</packaging>
     <name>Starter Kit</name>
     <modules>
-        <module>../exceptions</module>
         <module>domain</module>
         <module>usecase</module>
         <module>persistence</module>
@@ -21,11 +20,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>cl.emendare</groupId>
-                <artifactId>exceptions</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>cl.emendare.starterkit</groupId>
                 <artifactId>domain</artifactId>
