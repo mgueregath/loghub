@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.role.permission;
 
-import cl.emendare.exceptions.data.AlreadyExistException;
+import cl.emendare.starterkit.usecase.exception.data.AlreadyExistException;
 import cl.emendare.starterkit.domain.security.contract.method.GetSecureMethodInterface;
 import cl.emendare.starterkit.domain.security.contract.role.GetRoleInterface;
 import cl.emendare.starterkit.domain.security.contract.role.permission.AddPermissionToRoleInterface;

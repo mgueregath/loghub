@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.contract.user.CheckIfUserExistInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.User;

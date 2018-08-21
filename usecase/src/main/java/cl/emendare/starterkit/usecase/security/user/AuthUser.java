@@ -3,9 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
-import cl.emendare.exceptions.auth.UnauthorizedException;
-import cl.emendare.exceptions.data.DataNotFoundException;
-import cl.emendare.exceptions.security.ForbiddenException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.contract.token.GenerateTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.token.GetTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.token.InvalidateTokenInterface;
@@ -14,6 +12,8 @@ import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.Token;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.usecase.adapter.password.hasher.PasswordHasherAdapter;
+import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
+import cl.emendare.starterkit.usecase.exception.security.ForbiddenException;
 import cl.emendare.starterkit.usecase.migration.data.Roles;
 import com.google.inject.Inject;
 import java.util.List;

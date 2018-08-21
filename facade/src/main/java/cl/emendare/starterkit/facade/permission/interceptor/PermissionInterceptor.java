@@ -3,12 +3,12 @@
  */
 package cl.emendare.starterkit.facade.permission.interceptor;
 
-import cl.emendare.exceptions.security.ForbiddenException;
 import cl.emendare.starterkit.domain.error.SaveErrorInterface;
 import cl.emendare.starterkit.domain.security.contract.user.CheckIfTheUserHasPermissionInterface;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.facade.permission.annotation.Permission;
 import cl.emendare.starterkit.facade.permission.annotation.ProtectedService;
+import cl.emendare.starterkit.usecase.exception.security.ForbiddenException;
 import com.google.inject.Inject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;

@@ -3,7 +3,6 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
-import cl.emendare.exceptions.security.ForbiddenException;
 import cl.emendare.starterkit.domain.security.contract.user.ChangeUserPasswordInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.User;
@@ -12,6 +11,7 @@ import cl.emendare.starterkit.usecase.adapter.password.hasher.PasswordHasherAdap
 import cl.emendare.starterkit.usecase.exception.businessrule.password.CurrentPasswordAndNewPasswordAreEqualsException;
 import cl.emendare.starterkit.usecase.exception.businessrule.password.NewPasswordAndRepeatedNewPasswordMustBeEqualsException;
 import cl.emendare.starterkit.usecase.exception.businessrule.password.PasswordNotChangedException;
+import cl.emendare.starterkit.usecase.exception.security.ForbiddenException;
 import com.google.inject.Inject;
 
 /**

@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.role;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.contract.role.GetRoleInterface;
 import cl.emendare.starterkit.domain.security.entity.Role;
 import cl.emendare.starterkit.domain.security.repository.RoleRepositoryInterface;

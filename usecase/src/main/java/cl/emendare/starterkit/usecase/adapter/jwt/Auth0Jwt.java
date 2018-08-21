@@ -3,8 +3,8 @@
  */
 package cl.emendare.starterkit.usecase.adapter.jwt;
 
-import cl.emendare.exceptions.jwt.JwtGenerationException;
-import cl.emendare.exceptions.jwt.JwtValidationException;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtGenerationException;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtValidationException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

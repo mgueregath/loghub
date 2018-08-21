@@ -3,8 +3,8 @@
  */
 package cl.emendare.starterkit.usecase.security.role;
 
-import cl.emendare.exceptions.data.AlreadyExistException;
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.AlreadyExistException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.contract.role.GetRoleInterface;
 import cl.emendare.starterkit.domain.security.contract.role.NewRoleInterface;
 import cl.emendare.starterkit.domain.security.entity.Role;

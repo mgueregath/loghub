@@ -3,11 +3,11 @@
  */
 package cl.emendare.starterkit.usecase.security.token;
 
-import cl.emendare.exceptions.jwt.JwtInvalidationException;
 import cl.emendare.starterkit.domain.security.contract.token.GetTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.token.InvalidateTokenInterface;
 import cl.emendare.starterkit.domain.security.entity.Token;
 import cl.emendare.starterkit.domain.security.repository.TokenRepositoryInterface;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtInvalidationException;
 import com.google.inject.Inject;
 
 /**

@@ -3,9 +3,9 @@
  */
 package cl.emendare.starterkit.persistence.postgresql.repository;
 
-import cl.emendare.exceptions.persistence.PersistingException;
 import cl.emendare.starterkit.domain.mailing.entity.Email;
 import cl.emendare.starterkit.domain.mailing.repository.EmailRepositoryInterface;
+import cl.emendare.starterkit.persistence.exception.PersistingException;
 import cl.emendare.starterkit.persistence.postgresql.PostgreSQLSession;
 import com.google.inject.Inject;
 import java.util.Date;

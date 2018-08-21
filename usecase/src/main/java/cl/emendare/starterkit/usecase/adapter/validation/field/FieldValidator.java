@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.adapter.validation.field;
 
-import cl.emendare.exceptions.validation.ParameterValidationException;
+import cl.emendare.starterkit.usecase.exception.validation.ParameterValidationException;
 import java.util.Date;
 
 /**

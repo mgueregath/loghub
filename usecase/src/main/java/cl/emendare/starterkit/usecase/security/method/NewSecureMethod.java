@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.method;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.repository.SecureMethodRepositoryInterface;
 import cl.emendare.starterkit.domain.security.contract.method.GetSecureMethodInterface;
 import cl.emendare.starterkit.domain.security.contract.method.NewSecureMethodInterface;

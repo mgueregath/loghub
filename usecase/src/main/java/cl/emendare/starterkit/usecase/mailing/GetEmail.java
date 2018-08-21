@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.mailing;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.mailing.contract.GetEmailInterface;
 import cl.emendare.starterkit.domain.mailing.entity.Email;
 import cl.emendare.starterkit.domain.mailing.repository.EmailRepositoryInterface;

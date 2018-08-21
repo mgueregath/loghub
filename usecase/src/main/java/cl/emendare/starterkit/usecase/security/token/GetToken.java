@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.token;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.contract.token.GetTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.Token;

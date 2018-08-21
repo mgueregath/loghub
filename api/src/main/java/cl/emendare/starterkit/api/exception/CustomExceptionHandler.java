@@ -3,15 +3,15 @@
  */
 package cl.emendare.starterkit.api.exception;
 
-import cl.emendare.exceptions.MappedException;
-import cl.emendare.exceptions.auth.UnauthorizedException;
-import cl.emendare.exceptions.data.AlreadyExistException;
-import cl.emendare.exceptions.data.DataNotFoundException;
-import cl.emendare.exceptions.jwt.JwtGenerationException;
-import cl.emendare.exceptions.jwt.JwtValidationException;
-import cl.emendare.exceptions.jwt.MalformedJwtException;
-import cl.emendare.exceptions.security.ForbiddenException;
+import cl.emendare.starterkit.usecase.exception.data.AlreadyExistException;
 import cl.emendare.starterkit.api.adapter.response.ResponseAdapter;
+import cl.emendare.starterkit.domain.exception.MappedException;
+import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtGenerationException;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtValidationException;
+import cl.emendare.starterkit.usecase.exception.jwt.MalformedJwtException;
+import cl.emendare.starterkit.usecase.exception.security.ForbiddenException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;

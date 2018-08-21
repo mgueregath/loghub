@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.adapter.validation.email;
 
-import cl.emendare.exceptions.validation.EmailAddressValidationException;
+import cl.emendare.starterkit.usecase.exception.validation.EmailAddressValidationException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

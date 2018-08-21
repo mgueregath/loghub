@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.persistence.storage;
 
-import cl.emendare.exceptions.persistence.DeletingException;
+import cl.emendare.starterkit.persistence.exception.DeletingException;
 import static cl.emendare.starterkit.persistence.storage.StoragePath.BASE_PATH;
 import cl.emendare.starterkit.persistence.storage.exception.FileStorageException;
 import java.io.File;

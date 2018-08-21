@@ -3,8 +3,8 @@
  */
 package cl.emendare.starterkit.persistence.postgresql.repository;
 
-import cl.emendare.exceptions.persistence.DeletingException;
-import cl.emendare.exceptions.persistence.PersistingException;
+import cl.emendare.starterkit.persistence.exception.PersistingException;
+import cl.emendare.starterkit.persistence.exception.DeletingException;
 import cl.emendare.starterkit.domain.security.entity.Role;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.domain.security.repository.UserRepositoryInterface;

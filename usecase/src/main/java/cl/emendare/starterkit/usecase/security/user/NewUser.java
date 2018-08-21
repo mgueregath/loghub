@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
-import cl.emendare.exceptions.data.AlreadyExistException;
+import cl.emendare.starterkit.usecase.exception.data.AlreadyExistException;
 import cl.emendare.starterkit.domain.security.contract.role.GetRoleInterface;
 import cl.emendare.starterkit.domain.security.contract.user.CheckIfUserExistInterface;
 import cl.emendare.starterkit.domain.security.contract.user.NewUserInterface;

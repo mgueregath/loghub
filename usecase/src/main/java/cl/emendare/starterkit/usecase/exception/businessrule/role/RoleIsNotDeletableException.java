@@ -3,7 +3,7 @@
  */
 package cl.emendare.starterkit.usecase.exception.businessrule.role;
 
-import cl.emendare.exceptions.MappedException;
+import cl.emendare.starterkit.domain.exception.MappedException;
 
 /**
  *

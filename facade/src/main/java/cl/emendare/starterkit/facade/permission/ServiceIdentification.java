@@ -3,8 +3,8 @@
  */
 package cl.emendare.starterkit.facade.permission;
 
-import cl.emendare.exceptions.data.DataNotFoundException;
 import cl.emendare.starterkit.domain.security.entity.Service;
+import cl.emendare.starterkit.usecase.exception.data.DataNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 

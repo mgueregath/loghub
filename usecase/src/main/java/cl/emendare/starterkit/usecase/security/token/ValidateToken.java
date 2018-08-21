@@ -3,15 +3,15 @@
  */
 package cl.emendare.starterkit.usecase.security.token;
 
-import cl.emendare.exceptions.auth.UnauthorizedException;
-import cl.emendare.exceptions.jwt.JwtValidationException;
-import cl.emendare.exceptions.jwt.MalformedJwtException;
 import cl.emendare.starterkit.domain.security.contract.token.GetTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.token.ValidateTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.Token;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.usecase.adapter.jwt.JwtAdapter;
+import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
+import cl.emendare.starterkit.usecase.exception.jwt.JwtValidationException;
+import cl.emendare.starterkit.usecase.exception.jwt.MalformedJwtException;
 import cl.emendare.starterkit.usecase.migration.data.Roles;
 import com.google.inject.Inject;
 
