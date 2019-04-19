@@ -1,7 +1,7 @@
 /*
  * StarterKit.
  */
-package cl.emendare.starterkit.usecase.migration.data;
+package cl.emendare.starterkit.domain.migration.data;
 
 import cl.emendare.starterkit.domain.migration.InitData;
 import cl.emendare.starterkit.domain.security.entity.Role;

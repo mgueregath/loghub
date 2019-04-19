@@ -62,9 +62,9 @@
                 <default.schema>starterkit</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName></dataSource.serverName>
-                <dataSource.portNumber>5432</dataSource.portNumber>
+                <dataSource.portNumber></dataSource.portNumber>
                 <dataSource.databaseName>starterkit</dataSource.databaseName>
-                <dataSource.user>postgres</dataSource.user>
+                <dataSource.user></dataSource.user>
                 <dataSource.password></dataSource.password>
             </properties>
             <build>
@@ -82,9 +82,9 @@
                 <default.schema>starterkit</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName></dataSource.serverName>
-                <dataSource.portNumber>5432</dataSource.portNumber>
+                <dataSource.portNumber></dataSource.portNumber>
                 <dataSource.databaseName>starterkit</dataSource.databaseName>
-                <dataSource.user>postgres</dataSource.user>
+                <dataSource.user></dataSource.user>
                 <dataSource.password></dataSource.password>
             </properties>
             <build>
@@ -102,9 +102,9 @@
                 <default.schema>starterkit</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName></dataSource.serverName>
-                <dataSource.portNumber>5432</dataSource.portNumber>
+                <dataSource.portNumber></dataSource.portNumber>
                 <dataSource.databaseName>starterkit</dataSource.databaseName>
-                <dataSource.user>postgres</dataSource.user>
+                <dataSource.user></dataSource.user>
                 <dataSource.password></dataSource.password>
             </properties>
             <build>

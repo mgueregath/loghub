@@ -54,8 +54,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <mailing.address>emendarecl@gmail.com</mailing.address>
-                <mailing.name>Emendare</mailing.name>
+                <mailing.address>codeffeine.io@gmail.com</mailing.address>
+                <mailing.name>Codeffeine</mailing.name>
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>

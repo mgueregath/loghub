@@ -11,7 +11,7 @@ import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.facade.permission.ServiceIdentification;
 import cl.emendare.starterkit.facade.permission.annotation.Permission;
 import cl.emendare.starterkit.facade.permission.annotation.ProtectedService;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
 import com.google.inject.Inject;
 
 /**
@@ -67,5 +67,9 @@ public class AuthenticationService {
 
     public User validateToken(String token) {
         return validateToken.validateForAuth(token);
+    }
+
+    public User validateTokenForPasswordRecovery(String token) {
+        return validateToken.validateForSetPassword(token);
     }
 }

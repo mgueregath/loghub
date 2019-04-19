@@ -61,17 +61,26 @@ public class PermissionInterceptor {
 
     @AfterReturning("execution(* cl.emendare.starterkit.facade..service..*(..))")
     public void success(JoinPoint joinPoint) {
-        logActions(joinPoint, true, null);
+        logActions(joinPoint, true);
     }
 
     public void logActions(JoinPoint joinPoint, boolean result, Throwable e) {
         MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
-
-        if (joinPoint.getArgs().length > 0 && joinPoint.getArgs()[0].getClass() == User.class) {
+        if (joinPoint.getArgs().length > 0 && joinPoint.getArgs()[0] != null && joinPoint.getArgs()[0].getClass() == User.class) {
             User user = (User) joinPoint.getArgs()[0];
             saveError.save(user.getUsername(), result, methodSig.getMethod().getName(), e);
         } else {
             saveError.save("", result, methodSig.getMethod().getName(), e);
+        }
+    }
+
+    public void logActions(JoinPoint joinPoint, boolean result) {
+        MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
+        if (joinPoint.getArgs().length > 0 && joinPoint.getArgs()[0] != null && joinPoint.getArgs()[0].getClass() == User.class) {
+            User user = (User) joinPoint.getArgs()[0];
+            saveError.save(user.getUsername(), result, methodSig.getMethod().getName());
+        } else {
+            saveError.save("", result, methodSig.getMethod().getName());
         }
     }
 }

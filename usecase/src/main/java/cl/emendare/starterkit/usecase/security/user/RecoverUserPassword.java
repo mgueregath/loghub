@@ -3,13 +3,18 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
+import cl.emendare.starterkit.domain.mailing.contract.NewEmailInterface;
+import cl.emendare.starterkit.domain.security.contract.token.GenerateTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.contract.user.RecoverUserPasswordInterface;
+import cl.emendare.starterkit.domain.security.entity.Token;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.domain.security.repository.UserRepositoryInterface;
-import cl.emendare.starterkit.usecase.adapter.password.generator.PasswordGeneratorAdapter;
-import cl.emendare.starterkit.usecase.adapter.password.hasher.PasswordHasherAdapter;
 import com.google.inject.Inject;
+import java.io.File;
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 
 /**
  *
@@ -19,43 +24,58 @@ public class RecoverUserPassword implements RecoverUserPasswordInterface {
 
     private final GetUserInterface getUser;
     private final UserRepositoryInterface repository;
-    private final PasswordGeneratorAdapter passwordGenerator;
-    private final PasswordHasherAdapter passwordHasher;
-    //private NewEmailInterface newEmail;
+    private final NewEmailInterface newEmail;
+    private final GenerateTokenInterface generateToken;
+    private static String server;
 
     @Inject
     public RecoverUserPassword(
             GetUserInterface getUser,
             UserRepositoryInterface repository,
-            PasswordGeneratorAdapter passwordGenerator,
-            PasswordHasherAdapter passwordHasher
-    //NewEmailInterface newEmail
+            NewEmailInterface newEmail,
+            GenerateTokenInterface generateToken
     ) {
         this.getUser = getUser;
         this.repository = repository;
-        this.passwordGenerator = passwordGenerator;
-        this.passwordHasher = passwordHasher;
-        //this.newEmail = newEmail;
+        this.newEmail = newEmail;
+        this.generateToken = generateToken;
+    }
+
+    static {
+        Configurations configs = new Configurations();
+        try {
+            Configuration config = configs.properties(new File("server.properties"));
+            server = config.getString("server");
+        } catch (ConfigurationException ex) {
+            throw new RuntimeException();
+        }
     }
 
     @Override
     public boolean recover(String username) {
         User user = getUser.getByUsername(username);
-        String password = passwordGenerator.generate();
-        user.setPassword(passwordHasher.hash(password));
-        user = repository.persist(user);
-        /*
+        user.setAccountRecovery(true);
+        Token token = generateToken.generateForSetPassword(user);
+
         newEmail.add(
-                person.getEmail(),
-                person.getFirstName() + " " + person.getFirstLastName(),
+                user.getEmail(),
+                "Usuario",
                 "Solicitud de recuperación de contraseña",
-                "Hemos recibido una solicitud para recuperar su contraseña. "
-                + "Junto con saludar, nos comunicamos ya que se ha solicitado la recuperación de su contraseña."
-                + "<br>Por favor acceda al sistema con la nueva contraseña que le proporcionamos."
-                + "<br><br>Nueva contraseña: <b>" + password
-                + "</b>. <br><br> Esta contraseña debe ser cambiada en su primer ingreso ya que si no es modificada, no se le permitirá operar."
+                "Junto con saludar, nos comunicamos ya que se ha solicitado la recuperación de su contraseña."
+                + "<br>Para continuar con el proceso de recuperación, presione el botón a continuación."
+                + "<br><br>"
+                + "<table role='presentation' cellspacing='0' cellpadding='0' border='0' align='center' style='margin: auto'>"
+                + "<tr>"
+                + "<td style='border-radius: 3px; background: #4d7900; text-align: center;' class='button-td'>"
+                + "<a href='" + server + "/auth/recovery?token=" + token.getToken() + "' style='background: #d3812c; border: 15px solid #d3812c; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;' class='button-a'>"
+                + "<span style='color:#ffffff;' class='button-link'>&nbsp;&nbsp;&nbsp;&nbsp;Cambiar contraseña&nbsp;&nbsp;&nbsp;&nbsp;</span>"
+                + "</a>"
+                + "</td>"
+                + "</tr>"
+                + "</table>"
+                + "<br><br> Si usted no ha solicitado el cambio, por favor, de todos modos realice el cambio."
         );
-         */
+        repository.persist(user);
         return true;
     }
 }

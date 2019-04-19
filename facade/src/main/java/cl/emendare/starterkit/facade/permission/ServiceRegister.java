@@ -10,7 +10,7 @@ import cl.emendare.starterkit.domain.security.entity.SecureMethod;
 import cl.emendare.starterkit.facade.permission.annotation.Permission;
 import cl.emendare.starterkit.facade.permission.annotation.ProtectedService;
 import cl.emendare.starterkit.usecase.keeper.CounterKeeper;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
 import com.google.inject.Inject;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

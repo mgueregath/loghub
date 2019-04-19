@@ -3,11 +3,13 @@
  */
 package cl.emendare.starterkit.usecase.security.user;
 
+import cl.emendare.starterkit.domain.security.contract.token.ValidateTokenInterface;
 import cl.emendare.starterkit.domain.security.contract.user.ChangeUserPasswordInterface;
 import cl.emendare.starterkit.domain.security.contract.user.GetUserInterface;
 import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.domain.security.repository.UserRepositoryInterface;
 import cl.emendare.starterkit.usecase.adapter.password.hasher.PasswordHasherAdapter;
+import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
 import cl.emendare.starterkit.usecase.exception.businessrule.password.CurrentPasswordAndNewPasswordAreEqualsException;
 import cl.emendare.starterkit.usecase.exception.businessrule.password.NewPasswordAndRepeatedNewPasswordMustBeEqualsException;
 import cl.emendare.starterkit.usecase.exception.businessrule.password.PasswordNotChangedException;
@@ -23,16 +25,19 @@ public class ChangeUserPassword implements ChangeUserPasswordInterface {
     private final GetUserInterface getUser;
     private final UserRepositoryInterface repository;
     private final PasswordHasherAdapter passwordHasher;
+    private final ValidateTokenInterface validateToken;
 
     @Inject
     public ChangeUserPassword(
             GetUserInterface getUser,
             UserRepositoryInterface repository,
-            PasswordHasherAdapter passwordHasher
+            PasswordHasherAdapter passwordHasher,
+            ValidateTokenInterface validateToken
     ) {
         this.getUser = getUser;
         this.repository = repository;
         this.passwordHasher = passwordHasher;
+        this.validateToken = validateToken;
     }
 
     @Override
@@ -52,6 +57,25 @@ public class ChangeUserPassword implements ChangeUserPasswordInterface {
         if (passwordHasher.validate(newPassword, user.getPassword())) {
             user.setPassword(null);
             return user;
+        }
+        throw new PasswordNotChangedException();
+    }
+
+    @Override
+    public boolean changePassword(String token, String password, String repeatedPassword) {
+        User user = validateToken.validateForSetPassword(token);
+        if (!user.getAccountRecovery()) {
+            throw new UnauthorizedException();
+        }
+        if (!password.equals(repeatedPassword)) {
+            throw new NewPasswordAndRepeatedNewPasswordMustBeEqualsException();
+        }
+
+        user.setPassword(passwordHasher.hash(password));
+        user.setAccountRecovery(false);
+        user = repository.persist(user);
+        if (passwordHasher.validate(password, user.getPassword())) {
+            return true;
         }
         throw new PasswordNotChangedException();
     }

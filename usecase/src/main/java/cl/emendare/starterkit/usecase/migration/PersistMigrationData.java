@@ -31,7 +31,7 @@ public class PersistMigrationData implements PersistMigrationDataInterface {
 
     @Override
     public void persist() {
-        Reflections reflections = new Reflections("cl.emendare.starterkit.usecase.migration.data");
+        Reflections reflections = new Reflections("cl.emendare.starterkit.domain.migration.data");
         Set<Class<? extends InitData>> classes = reflections.getSubTypesOf(InitData.class);
         for (Class<? extends InitData> initData : classes) {
             try {

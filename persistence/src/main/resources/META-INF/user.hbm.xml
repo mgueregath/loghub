@@ -10,9 +10,13 @@
                 <param name="sequence">user_sequence</param>
             </generator>
         </id>
-        <property name="username" type="string" column="use_username" />
         <property name="password" type="string" column="use_password" />
-        <property name="domainId" type="integer" column="rol_domain_id"/>
+        <property name="domainId" type="integer" column="use_domain_id"/>
+        <property name="enabled" type="boolean" column="use_enabled"/>
+        <property name="accountRecovery" type="boolean" column="use_account_recovery" />
         <many-to-one name="role" column="use_role" class="Role" lazy="false"/>
+        <properties name="user_unique" unique="true">
+            <property name="username" type="string" column="use_username" />
+        </properties>
     </class>
 </hibernate-mapping>

@@ -10,4 +10,6 @@ package cl.emendare.starterkit.domain.error;
 public interface SaveErrorInterface {
 
     public void save(String username, boolean result, String methodName, Throwable t);
+
+    public void save(String username, boolean result, String methodName);
 }

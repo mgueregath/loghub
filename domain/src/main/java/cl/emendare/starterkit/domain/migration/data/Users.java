@@ -1,11 +1,10 @@
 /*
  * StarterKit.
  */
-package cl.emendare.starterkit.usecase.migration.data;
+package cl.emendare.starterkit.domain.migration.data;
 
 import cl.emendare.starterkit.domain.migration.InitData;
 import cl.emendare.starterkit.domain.security.entity.User;
-import cl.emendare.starterkit.usecase.adapter.password.hasher.BCryptPasswordHasher;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +16,12 @@ import java.util.Map;
  */
 public class Users extends InitData {
 
-    public static final int EMENDARE = 1;
+    public static final int CODEFFEINE = 1;
     private static final Map<Integer, User> users = new HashMap<>();
 
     public Users() {
         super();
-        users.put(EMENDARE, new User(EMENDARE, "emendare", (new BCryptPasswordHasher()).hash("emendare.2018"), "development@emendare.cl", Roles.getById(Roles.DEVELOPMENT)));
+        users.put(CODEFFEINE, new User(CODEFFEINE, "codeffeine", "$2a$10$WILulspOQKKgTnJKKMrFZeNk71EkNMpWwTCch/DNl8Okt5NnnrMxO", "development@codeffeine.io", Roles.getById(Roles.DEVELOPMENT)));
     }
 
     public static List<User> getUsers() {

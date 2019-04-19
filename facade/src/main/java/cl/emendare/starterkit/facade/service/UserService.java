@@ -11,7 +11,8 @@ import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.facade.permission.ServiceIdentification;
 import cl.emendare.starterkit.facade.permission.annotation.Permission;
 import cl.emendare.starterkit.facade.permission.annotation.ProtectedService;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
+import cl.emendare.starterkit.domain.security.contract.user.ChangeUserPasswordInterface;
 import com.google.inject.Inject;
 import java.util.List;
 
@@ -28,18 +29,21 @@ public class UserService {
     private final NewUserInterface newUser;
     private final CheckIfUserExistInterface checkIfUserExist;
     private final ChangeRoleToUserInterface changeRoleToUser;
+    private final ChangeUserPasswordInterface changeUserPassword;
 
     @Inject
     public UserService(
             GetUserInterface getUser,
             NewUserInterface newUser,
             CheckIfUserExistInterface checkIfUserExist,
-            ChangeRoleToUserInterface changeRoleToUser
+            ChangeRoleToUserInterface changeRoleToUser,
+            ChangeUserPasswordInterface changeUserPassword
     ) {
         this.getUser = getUser;
         this.newUser = newUser;
         this.checkIfUserExist = checkIfUserExist;
         this.changeRoleToUser = changeRoleToUser;
+        this.changeUserPassword = changeUserPassword;
     }
 
     @Permission(
@@ -105,5 +109,22 @@ public class UserService {
     )
     public List<User> getPaginatedUsers(User user, int page) {
         return getUser.getPaginated(page);
+    }
+
+    @Permission(
+            details = "Cambiar contraseña mediante recuperación",
+            method = 9,
+            roles = {Roles.PUBLIC}
+    )
+    public boolean changePassword(User user, String token, String password, String repeatedPassword) {
+        return changeUserPassword.changePassword(token, password, repeatedPassword);
+    }
+
+    @Permission(
+            details = "Cambiar contraseña",
+            method = 10
+    )
+    public User changeMyPassword(User user, String currentPassword, String newPassword, String repeatedPassword) {
+        return changeUserPassword.changePassword(user, currentPassword, newPassword, repeatedPassword);
     }
 }

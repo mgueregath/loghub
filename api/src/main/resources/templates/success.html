@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Recuperación de contraseña</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+              crossorigin="anonymous" />
+        <style>
+            body {
+                background-color: white;
+            }
+
+            .app {
+                display: flex;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .flex-row {
+                -ms-flex-direction: row !important;
+                flex-direction: row !important;
+            }
+
+            .align-items-center {
+                -ms-flex-align: center !important;
+                align-items: center !important;
+            }
+
+            .login-logo {
+                text-align: center;
+            }
+
+            .login-logo img {
+                width: 80%;
+                height: auto;
+                margin: 40px auto;
+            }
+
+            .btn-primary {
+                background-color: #e48a2b !important;
+                border-color: #e48a2b !important;
+            }
+
+            .btn-primary:hover {
+                background-color: #c86b35 !important;
+                border-color: #c86b35 !important;
+            }
+        </style>
+    </head>
+
+    <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+        <div class="app flex-row align-items-center login-background">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="login-logo">
+                            <img src="../../assets/images/logo.png" />
+                        </div>
+                        <div class="card-group">
+                            <div class="card p-4">
+                                <div class="card-body text-center">
+                                    <div class="login-background-white">
+                                        <p class="text-success" style="padding-top:10px; font-size:16pt">Contraseña modificada correctamente</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

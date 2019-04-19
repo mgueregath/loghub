@@ -23,11 +23,16 @@ public class SaveError implements SaveErrorInterface {
     @Override
     public void save(String username, boolean result, String methodName, Throwable t) {
         Thread thread = new Thread(() -> {
-            if (t == null) {
-                //Logger.getAnonymousLogger().log(Level.WARNING, "{0} {1} result: {2}", new Object[]{username, methodName, result});
-            } else {
-                //Logger.getAnonymousLogger().log(Level.WARNING, username + " " + methodName + " result: " + result, t);
-            }
+
+            errorReporting.send();
+        });
+        thread.start();
+    }
+
+    @Override
+    public void save(String username, boolean result, String methodName) {
+        Thread thread = new Thread(() -> {
+
             errorReporting.send();
         });
         thread.start();

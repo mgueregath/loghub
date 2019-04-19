@@ -7,7 +7,7 @@ import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.domain.security.contract.role.GetRoleInterface;
 import cl.emendare.starterkit.domain.security.entity.Role;
 import cl.emendare.starterkit.domain.security.entity.SecureMethod;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.HashMap;

@@ -12,7 +12,7 @@ import cl.emendare.starterkit.usecase.adapter.jwt.JwtAdapter;
 import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
 import cl.emendare.starterkit.usecase.exception.jwt.JwtValidationException;
 import cl.emendare.starterkit.usecase.exception.jwt.MalformedJwtException;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
 import com.google.inject.Inject;
 
 /**

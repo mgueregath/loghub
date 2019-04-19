@@ -14,7 +14,7 @@ import cl.emendare.starterkit.domain.security.entity.User;
 import cl.emendare.starterkit.usecase.adapter.password.hasher.PasswordHasherAdapter;
 import cl.emendare.starterkit.usecase.exception.auth.UnauthorizedException;
 import cl.emendare.starterkit.usecase.exception.security.ForbiddenException;
-import cl.emendare.starterkit.usecase.migration.data.Roles;
+import cl.emendare.starterkit.domain.migration.data.Roles;
 import com.google.inject.Inject;
 import java.util.List;
 
@@ -49,12 +49,12 @@ public class AuthUser implements AuthUserInterface {
     public Token login(String username, String password) {
         try {
             User user = getUser.getByUsername(username);
+            if (!user.isEnabled() || (user.getAccountRecovery() != null && user.getAccountRecovery())) {
+                throw new UnauthorizedException();
+            }
             if (!passwordHasher.validate(password, user.getPassword())) {
                 throw new UnauthorizedException();
             }
-            /*if (user.getStatus().getId() != UserStatuses.CHANGE_PASSWORD && user.getStatus().getId() != UserStatuses.ENABLED) {
-                throw new UnauthorizedException();
-            }*/
             return generateToken.generateForAuth(user);
         } catch (DataNotFoundException ex) {
             throw new UnauthorizedException();

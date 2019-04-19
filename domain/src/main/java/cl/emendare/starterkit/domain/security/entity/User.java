@@ -16,6 +16,8 @@ public class User extends MigratedEntity {
     private String password;
     private String email;
     private Role role;
+    private boolean enabled;
+    private Boolean accountRecovery;
 
     public User(int domainId, String username, String password, String email, Role role) {
         super.domainId = domainId;
@@ -23,6 +25,8 @@ public class User extends MigratedEntity {
         this.password = password;
         this.email = email;
         this.role = role;
+        this.enabled = true;
+        this.accountRecovery = false;
     }
 
     public User(String username, String password, String email, Role role) {
@@ -103,5 +107,33 @@ public class User extends MigratedEntity {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the enabled
+     */
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    /**
+     * @param enabled the enabled to set
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    /**
+     * @return the accountRecovery
+     */
+    public Boolean getAccountRecovery() {
+        return accountRecovery;
+    }
+
+    /**
+     * @param accountRecovery the accountRecovery to set
+     */
+    public void setAccountRecovery(Boolean accountRecovery) {
+        this.accountRecovery = accountRecovery;
     }
 }
