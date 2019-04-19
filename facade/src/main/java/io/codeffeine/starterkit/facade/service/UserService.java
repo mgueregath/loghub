@@ -1,0 +1,130 @@
+/*
+ * StarterKit.
+ */
+package io.codeffeine.starterkit.facade.service;
+
+import io.codeffeine.starterkit.domain.security.contract.user.ChangeRoleToUserInterface;
+import io.codeffeine.starterkit.domain.security.contract.user.CheckIfUserExistInterface;
+import io.codeffeine.starterkit.domain.security.contract.user.GetUserInterface;
+import io.codeffeine.starterkit.domain.security.contract.user.NewUserInterface;
+import io.codeffeine.starterkit.domain.security.entity.User;
+import io.codeffeine.starterkit.facade.permission.ServiceIdentification;
+import io.codeffeine.starterkit.facade.permission.annotation.Permission;
+import io.codeffeine.starterkit.facade.permission.annotation.ProtectedService;
+import io.codeffeine.starterkit.domain.migration.data.Roles;
+import io.codeffeine.starterkit.domain.security.contract.user.ChangeUserPasswordInterface;
+import com.google.inject.Inject;
+import java.util.List;
+
+/**
+ *
+ * @author Mirko Gueregat @mgueregath <mgueregath@codeffeine.io>
+ */
+@ProtectedService(
+        service = ServiceIdentification.USERS
+)
+public class UserService {
+
+    private final GetUserInterface getUser;
+    private final NewUserInterface newUser;
+    private final CheckIfUserExistInterface checkIfUserExist;
+    private final ChangeRoleToUserInterface changeRoleToUser;
+    private final ChangeUserPasswordInterface changeUserPassword;
+
+    @Inject
+    public UserService(
+            GetUserInterface getUser,
+            NewUserInterface newUser,
+            CheckIfUserExistInterface checkIfUserExist,
+            ChangeRoleToUserInterface changeRoleToUser,
+            ChangeUserPasswordInterface changeUserPassword
+    ) {
+        this.getUser = getUser;
+        this.newUser = newUser;
+        this.checkIfUserExist = checkIfUserExist;
+        this.changeRoleToUser = changeRoleToUser;
+        this.changeUserPassword = changeUserPassword;
+    }
+
+    @Permission(
+            details = "Ver los usuarios",
+            method = 1
+    )
+    public List<User> getUsers(User user) {
+        return getUser.getAll();
+    }
+
+    @Permission(
+            details = "Ver los usuarios por rol",
+            method = 2
+    )
+    public List<User> getUsersByRole(User user, int role) {
+        return getUser.getByRole(role);
+    }
+
+    @Permission(
+            details = "Ver un usuario",
+            method = 3
+    )
+    public User getUser(User user, int userId) {
+        return getUser.getById(userId);
+    }
+
+    @Permission(
+            details = "Añadir un usuario",
+            method = 4,
+            roles = {Roles.PUBLIC}
+    )
+    public User newUser(User user, String username, String password, String repeatedPassword, String email, int role) {
+        return newUser.add(username, password, repeatedPassword, email, role);
+    }
+
+    @Permission(
+            details = "Cambiar el rol a un usuario",
+            method = 5
+    )
+    public User changeRole(User user, int userId, int role) {
+        return changeRoleToUser.changeRole(userId, role);
+    }
+
+    @Permission(
+            details = "Verificar si un usuario existe",
+            method = 6
+    )
+    public boolean checkIfUserExist(User user, String username) {
+        return checkIfUserExist.checkByUsername(username);
+    }
+
+    @Permission(
+            details = "Buscar usuarios",
+            method = 7
+    )
+    public List<User> searchUser(User user, String search) {
+        return getUser.search(search);
+    }
+
+    @Permission(
+            details = "Ver los usuarios paginados",
+            method = 8
+    )
+    public List<User> getPaginatedUsers(User user, int page) {
+        return getUser.getPaginated(page);
+    }
+
+    @Permission(
+            details = "Cambiar contraseña mediante recuperación",
+            method = 9,
+            roles = {Roles.PUBLIC}
+    )
+    public boolean changePassword(User user, String token, String password, String repeatedPassword) {
+        return changeUserPassword.changePassword(token, password, repeatedPassword);
+    }
+
+    @Permission(
+            details = "Cambiar contraseña",
+            method = 10
+    )
+    public User changeMyPassword(User user, String currentPassword, String newPassword, String repeatedPassword) {
+        return changeUserPassword.changePassword(user, currentPassword, newPassword, repeatedPassword);
+    }
+}

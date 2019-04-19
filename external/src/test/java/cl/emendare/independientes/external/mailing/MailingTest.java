@@ -1,16 +1,16 @@
 /*
  * StarterKit.
  */
-package cl.emendare.starterkit.external.mailing;
+package io.codeffeine.starterkit.external.mailing;
 
-import cl.emendare.starterkit.domain.mailing.entity.Email;
+import io.codeffeine.starterkit.domain.mailing.entity.Email;
 import java.util.Date;
 import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  *
- * @author Mirko Gueregat @mgueregath <mgueregath@emendare.cl>
+ * @author Mirko Gueregat @mgueregath <mgueregath@codeffeine.io>
  */
 @Ignore
 public class MailingTest {

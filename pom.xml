@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cl.emendare.starterkit</groupId>
+    <groupId>io.codeffeine.starterkit</groupId>
     <artifactId>starterkit</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -21,32 +21,32 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>persistence</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>external</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>usecase</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>facade</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cl.emendare.starterkit</groupId>
+                <groupId>io.codeffeine.starterkit</groupId>
                 <artifactId>api</artifactId>
                 <version>${project.version}</version>
             </dependency>

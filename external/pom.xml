@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cl.emendare.starterkit</groupId>
+        <groupId>io.codeffeine.starterkit</groupId>
         <artifactId>starterkit</artifactId>
         <version>1.0</version>
     </parent>
@@ -15,7 +15,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>cl.emendare.starterkit</groupId>
+            <groupId>io.codeffeine.starterkit</groupId>
             <artifactId>usecase</artifactId>
         </dependency>
         <dependency>
@@ -72,8 +72,8 @@
         <profile>
             <id>testing</id>
             <properties>
-                <mailing.address>emendarecl@gmail.com</mailing.address>
-                <mailing.name>Emendare</mailing.name>
+                <mailing.address>codeffeine.io@gmail.com</mailing.address>
+                <mailing.name>Codeffeine</mailing.name>
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>
@@ -90,8 +90,8 @@
         <profile>
             <id>production</id>
             <properties>
-                <mailing.address>emendarecl@gmail.com</mailing.address>
-                <mailing.name>Emendare</mailing.name>
+                <mailing.address>codeffeine.io@gmail.com</mailing.address>
+                <mailing.name>Codeffeine</mailing.name>
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>

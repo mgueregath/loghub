@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="cl.emendare.starterkit.domain.security.entity">
+<hibernate-mapping package="io.codeffeine.starterkit.domain.security.entity">
     <class name="Token" table="token">
         <id name="id" type="long" column="tok_id">
             <generator class="identity" />

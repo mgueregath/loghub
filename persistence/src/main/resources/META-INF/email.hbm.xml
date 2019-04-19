@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="cl.emendare.starterkit.domain.mailing.entity">
+<hibernate-mapping package="io.codeffeine.starterkit.domain.mailing.entity">
     <class name="Email" table="email">
         <id name="id" type="long" column="ema_id">
             <generator class="sequence">

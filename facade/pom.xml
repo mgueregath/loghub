@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cl.emendare.starterkit</groupId>
+        <groupId>io.codeffeine.starterkit</groupId>
         <artifactId>starterkit</artifactId>
         <version>1.0</version>
     </parent>
@@ -36,15 +36,15 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>cl.emendare.starterkit</groupId>
+            <groupId>io.codeffeine.starterkit</groupId>
             <artifactId>usecase</artifactId>
         </dependency>
         <dependency>
-            <groupId>cl.emendare.starterkit</groupId>
+            <groupId>io.codeffeine.starterkit</groupId>
             <artifactId>persistence</artifactId>
         </dependency>
         <dependency>
-            <groupId>cl.emendare.starterkit</groupId>
+            <groupId>io.codeffeine.starterkit</groupId>
             <artifactId>external</artifactId>
         </dependency>
         <dependency>
