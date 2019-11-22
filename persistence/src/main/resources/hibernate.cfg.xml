@@ -23,5 +23,6 @@
         <mapping resource="META-INF/token.hbm.xml"/>
         <mapping resource="META-INF/role.hbm.xml"/>
         <mapping resource="META-INF/email.hbm.xml"/>
+        <mapping resource="META-INF/notification.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

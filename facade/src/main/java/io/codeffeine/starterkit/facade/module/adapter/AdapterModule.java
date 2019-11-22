@@ -16,6 +16,8 @@ import io.codeffeine.starterkit.usecase.adapter.validation.email.EmailAddressVal
 import io.codeffeine.starterkit.usecase.adapter.validation.field.FieldValidator;
 import io.codeffeine.starterkit.usecase.adapter.validation.field.FieldValidatorAdapter;
 import com.google.inject.AbstractModule;
+import io.codeffeine.starterkit.usecase.adapter.validation.identification.ChileanIdentificationNumberValidator;
+import io.codeffeine.starterkit.usecase.adapter.validation.identification.IdentificationNumberValidatorAdapter;
 
 /**
  *
@@ -31,5 +33,6 @@ public class AdapterModule extends AbstractModule {
         bind(PasswordGeneratorAdapter.class).to(PasswordGenerator.class);
         bind(JwtAdapter.class).to(Auth0Jwt.class);
         bind(MailingAdapter.class).to(Mailing.class);
+        bind(IdentificationNumberValidatorAdapter.class).to(ChileanIdentificationNumberValidator.class);
     }
 }

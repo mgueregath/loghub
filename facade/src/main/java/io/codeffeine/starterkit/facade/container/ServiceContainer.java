@@ -24,6 +24,7 @@ import io.codeffeine.starterkit.facade.service.UserService;
 import io.codeffeine.starterkit.persistence.postgresql.PostgreSQLSession;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import io.codeffeine.starterkit.facade.module.notification.NotificationModule;
 
 /**
  *
@@ -45,7 +46,8 @@ public class ServiceContainer {
                 new UserModule(),
                 new MailingModule(),
                 new UsageModule(),
-                new ErrorModule()
+                new ErrorModule(),
+                new NotificationModule()
         );
         onStart();
     }

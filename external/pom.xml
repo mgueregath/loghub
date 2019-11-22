@@ -46,6 +46,17 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>6.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.11.RELEASE</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
@@ -59,6 +70,9 @@
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>
+                <fcm.credential></fcm.credential>
+                <fcm.url></fcm.url>
+                <fcm.enabled>false</fcm.enabled>
             </properties>
             <build>
                 <resources>
@@ -77,6 +91,9 @@
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>
+                <fcm.credential></fcm.credential>
+                <fcm.url></fcm.url>
+                <fcm.enabled>false</fcm.enabled>
             </properties>
             <build>
                 <resources>
@@ -95,6 +112,9 @@
                 <mailing.password></mailing.password>
                 <mailing.port>465</mailing.port>
                 <mailing.server>smtp.gmail.com</mailing.server>
+                <fcm.credential></fcm.credential>
+                <fcm.url></fcm.url>
+                <fcm.enabled>false</fcm.enabled>
             </properties>
             <build>
                 <resources>
