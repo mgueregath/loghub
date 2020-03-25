@@ -6,8 +6,8 @@
 <hibernate-mapping package="io.codeffeine.starterkit.domain.mailing.entity">
     <class name="Email" table="email">
         <id name="id" type="long" column="ema_id">
-            <generator class="sequence">
-                <param name="sequence">email_seq</param>
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">email_seq</param>
             </generator>
         </id>
         <property name="to" type="string" column="ema_to" />

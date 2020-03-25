@@ -6,7 +6,9 @@
 <hibernate-mapping package="io.codeffeine.starterkit.domain.security.entity">
     <class name="Token" table="token">
         <id name="id" type="long" column="tok_id">
-            <generator class="identity" />
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">token_sequence</param>
+            </generator>
         </id>
         <property name="token" type="string" column="tok_token" />
         <property name="dateTime" type="timestamp" column="tok_datetime" />
