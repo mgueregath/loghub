@@ -15,6 +15,7 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
 public class Keys {
 
     private static String authKey;
+    private static String recoveryKey;
 
     static {
         authKey = "";
@@ -22,8 +23,10 @@ public class Keys {
         try {
             Configuration config = configs.properties(new File("AuthenticationKey.properties"));
             authKey = config.getString("auth");
+            recoveryKey = config.getString("recovery");
         } catch (ConfigurationException ex) {
             authKey = "sasdsdsadasdas";
+            recoveryKey = "sasdsds22asdas";
         }
     }
 
@@ -33,6 +36,10 @@ public class Keys {
 
     public static String getAuthKey() {
         return authKey;
+    }
+
+    public static String getRecoveryKey() {
+        return recoveryKey;
     }
 
 }

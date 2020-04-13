@@ -15,5 +15,6 @@
         <property name="content" type="text" column="ema_content" />
         <property name="date" type="timestamp" column="ema_date" />
         <property name="name" type="string" column="ema_name" />
+        <property name="sent" type="boolean" column="ema_sent" />
     </class>
 </hibernate-mapping>

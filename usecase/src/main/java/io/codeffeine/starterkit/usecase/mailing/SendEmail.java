@@ -7,6 +7,7 @@ import io.codeffeine.starterkit.domain.mailing.contract.SendEmailInterface;
 import io.codeffeine.starterkit.domain.mailing.entity.Email;
 import io.codeffeine.starterkit.usecase.adapter.mailing.MailingAdapter;
 import com.google.inject.Inject;
+import io.codeffeine.starterkit.domain.mailing.repository.EmailRepositoryInterface;
 
 /**
  *
@@ -15,10 +16,15 @@ import com.google.inject.Inject;
 public class SendEmail implements SendEmailInterface {
 
     private final MailingAdapter emailService;
+    private final EmailRepositoryInterface repository;
 
     @Inject
-    public SendEmail(MailingAdapter emailService) {
+    public SendEmail(
+            MailingAdapter emailService,
+            EmailRepositoryInterface repository
+    ) {
         this.emailService = emailService;
+        this.repository = repository;
     }
 
     @Override
@@ -221,7 +227,12 @@ public class SendEmail implements SendEmailInterface {
                 + "</body>\n"
                 + "</html>";
         email.setContent(template);
-        Thread t = new Thread(() -> emailService.send(email));
-        t.start();
+        try {
+            Thread t = new Thread(() -> emailService.send(email));
+            t.start();
+        } catch (Exception e) {
+            email.setSent(false);
+            repository.persist(email);
+        }
     }
 }

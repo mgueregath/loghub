@@ -58,7 +58,7 @@ public class GenerateToken implements GenerateTokenInterface {
         token.setType(type);
 
         token = tokenRepository.persist(token);
-        token.setToken(jwtAdapter.generate(token.getId(), token.getUser().getId(), token.getType(), Keys.getAuthKey()));
+        token.setToken(jwtAdapter.generate(token.getId(), token.getUser().getId(), token.getType(), type == 1 ? Keys.getAuthKey() : Keys.getRecoveryKey()));
         token = tokenRepository.persist(token);
         token.getUser().setPassword("");
         return token;

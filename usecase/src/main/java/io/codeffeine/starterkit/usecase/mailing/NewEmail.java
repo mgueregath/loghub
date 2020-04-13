@@ -9,7 +9,6 @@ import io.codeffeine.starterkit.domain.mailing.entity.Email;
 import io.codeffeine.starterkit.domain.mailing.repository.EmailRepositoryInterface;
 import io.codeffeine.starterkit.usecase.adapter.validation.field.FieldValidatorAdapter;
 import com.google.inject.Inject;
-import java.util.Date;
 
 /**
  *
@@ -35,12 +34,7 @@ public class NewEmail implements NewEmailInterface {
     @Override
     public Email add(String to, String name, String subject, String content) {
         fieldValidator.validate(to, subject);
-        Email email = new Email();
-        email.setSubject(subject);
-        email.setDate(new Date());
-        email.setContent(content);
-        email.setTo(to);
-        email.setName(name);
+        Email email = new Email(to, subject, content, name);
         email = emailRepository.persist(email);
         sendEmail.send(email);
         return email;

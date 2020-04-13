@@ -49,16 +49,16 @@ public class ValidateToken implements ValidateTokenInterface {
         return validate(token, 2);
     }
 
-    private void checkGrammar(String tokenString) {
+    private void checkGrammar(String tokenString, int type) {
         if (tokenString == null) {
             throw new MalformedJwtException();
         }
 
-        if (!tokenString.startsWith("Bearer ")) {
+        if (type == 1 && !tokenString.startsWith("Bearer ")) {
             throw new MalformedJwtException();
         }
 
-        if (tokenString.split(" ").length != 2) {
+        if (type == 1 && tokenString.split(" ").length != 2) {
             throw new MalformedJwtException();
         }
     }
@@ -67,12 +67,14 @@ public class ValidateToken implements ValidateTokenInterface {
         if (tokenString == null) {
             return publicUser;
         }
-        checkGrammar(tokenString);
+        checkGrammar(tokenString, type);
 
-        tokenString = tokenString.split(" ")[1];
+        if (type == 1) {
+            tokenString = tokenString.split(" ")[1];
+        }
 
         try {
-            long tokenId = jwt.validate(tokenString, Keys.getAuthKey());
+            long tokenId = jwt.validate(tokenString, type == 1 ? Keys.getAuthKey() : Keys.getRecoveryKey());
             Token token = getToken.getById(tokenId);
 
             if (token.getStatus() != 1) {
@@ -87,11 +89,11 @@ public class ValidateToken implements ValidateTokenInterface {
 
     @Override
     public Token getToken(String tokenString, int type) {
-        checkGrammar(tokenString);
+        checkGrammar(tokenString, type);
         tokenString = tokenString.split(" ")[1];
 
         try {
-            long tokenId = jwt.validate(tokenString, Keys.getAuthKey());
+            long tokenId = jwt.validate(tokenString, type == 1 ? Keys.getAuthKey() : Keys.getRecoveryKey());
             return getToken.getById(tokenId);
         } catch (JwtValidationException e) {
             throw new UnauthorizedException();

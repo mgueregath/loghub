@@ -17,6 +17,19 @@ public class Email {
     private String content;
     private Date date;
     private String name;
+    private Boolean sent;
+
+    public Email() {
+    }
+
+    public Email(String to, String subject, String content, String name) {
+        this.to = to;
+        this.subject = subject;
+        this.content = content;
+        this.date = new Date();
+        this.name = name;
+        this.sent = true;
+    }
 
     /**
      * @return the id
@@ -100,5 +113,19 @@ public class Email {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the sent
+     */
+    public Boolean getSent() {
+        return sent;
+    }
+
+    /**
+     * @param sent the sent to set
+     */
+    public void setSent(Boolean sent) {
+        this.sent = sent;
     }
 }
