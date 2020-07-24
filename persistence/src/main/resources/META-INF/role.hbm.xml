@@ -16,8 +16,8 @@
         <set name="permissions" table="role_permissions" lazy="false" cascade="all">
             <key column="rpe_role" not-null="true"/>
             <many-to-many class="SecureMethod">
-                <column name="rpe_method" />
                 <column name="rpe_service" />
+                <column name="rpe_method" />
             </many-to-many>
         </set>
     </class>
