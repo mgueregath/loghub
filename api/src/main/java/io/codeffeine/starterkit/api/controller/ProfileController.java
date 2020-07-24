@@ -40,6 +40,22 @@ public class ProfileController {
 
     @RequestMapping(
             value = "",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    public @ResponseBody
+    ResponseEntity getUser(
+            @ModelAttribute("user") User user
+    ) {
+        return response.send(
+                true,
+                HttpStatus.OK,
+                sc.getUserService().getUser(user, user.getId())
+        );
+    }
+
+    @RequestMapping(
+            value = "",
             method = RequestMethod.POST,
             produces = "application/json"
     )
