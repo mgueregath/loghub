@@ -1,5 +1,6 @@
 */target/**
 */nbproject/**
+/.idea/**
 /.git-rewrite/t/domain/target/
 /.git-rewrite/t/external/target/
 /.git-rewrite/t/service/target/
