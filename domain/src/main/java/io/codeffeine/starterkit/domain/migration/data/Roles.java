@@ -17,13 +17,15 @@ import java.util.Map;
 public class Roles extends InitData {
 
     public static final int DEVELOPMENT = 9990;
-    public static final int PUBLIC = 8999;
+    public static final int PUBLIC = 7999;
+    public static final int PRIVATE = 8999;
     private static final Map<Integer, Role> roles = new HashMap<>();
 
     public Roles() {
         super();
-        roles.put(PUBLIC, new Role(PUBLIC, "Público", false));
-        roles.put(DEVELOPMENT, new Role(DEVELOPMENT, "Desarrollo", false));
+        roles.put(PUBLIC, new Role(PUBLIC, "Público", false, false));
+        roles.put(PRIVATE, new Role(PRIVATE, "Privado", false, false));
+        roles.put(DEVELOPMENT, new Role(DEVELOPMENT, "Desarrollo", false, false));
     }
 
     public static List<Role> getRoles() {

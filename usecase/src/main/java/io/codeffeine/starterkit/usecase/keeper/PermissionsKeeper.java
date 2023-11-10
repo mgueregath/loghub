@@ -3,12 +3,12 @@
  */
 package io.codeffeine.starterkit.usecase.keeper;
 
-import io.codeffeine.starterkit.domain.security.entity.User;
+import com.google.inject.Inject;
+import io.codeffeine.starterkit.domain.migration.data.Roles;
 import io.codeffeine.starterkit.domain.security.contract.role.GetRoleInterface;
 import io.codeffeine.starterkit.domain.security.entity.Role;
 import io.codeffeine.starterkit.domain.security.entity.SecureMethod;
-import io.codeffeine.starterkit.domain.migration.data.Roles;
-import com.google.inject.Inject;
+import io.codeffeine.starterkit.domain.security.entity.User;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,15 +64,27 @@ public class PermissionsKeeper {
         } catch (Exception e) {
             // No action
         }
-        if (user.getRole().getDomainId() != Roles.PUBLIC) {
-            try {
-                for (SecureMethod method : user.getRole().getPermissions()) {
-                    userPermissions[method.getMethod().getService() - 1][method.getMethod().getMethod() - 1] = true;
-                }
-            } catch (Exception e) {
-                // No action
-            }
+        if (user.getRole().getDomainId() == Roles.PUBLIC) {
+            return userPermissions;
         }
+
+        try {
+            Role role = getRole.getById(Roles.getById(Roles.PRIVATE).getId());
+            for (SecureMethod method : role.getPermissions()) {
+                userPermissions[method.getMethod().getService() - 1][method.getMethod().getMethod() - 1] = true;
+            }
+        } catch (Exception e) {
+            // No action
+        }
+
+        try {
+            for (SecureMethod method : user.getRole().getPermissions()) {
+                userPermissions[method.getMethod().getService() - 1][method.getMethod().getMethod() - 1] = true;
+            }
+        } catch (Exception e) {
+            // No action
+        }
+
         return userPermissions;
 
     }

@@ -3,6 +3,7 @@
  */
 package io.codeffeine.starterkit.persistence.storage.adapter;
 
+import io.codeffeine.starterkit.domain.adapter.Base64ConverterAdapter;
 import io.codeffeine.starterkit.persistence.storage.exception.FileConvertionException;
 import java.io.File;
 import java.io.IOException;

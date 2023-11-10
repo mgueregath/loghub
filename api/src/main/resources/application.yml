@@ -1,0 +1,12 @@
+server:
+  ssl:
+    key-store: ${keystore.location}
+    key-store-password: pass
+    key-store-type: pkcs12
+    key-alias: tomcat
+    key-password: pass
+  port: 8443
+
+logging:
+  level:
+    root: INFO

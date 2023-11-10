@@ -12,6 +12,7 @@
         </id>
         <property name="name" type="string" column="rol_name"/>
         <property name="deletable" type="boolean" column="rol_deletable"/>
+        <property name="assignable" type="boolean" column="rol_assignable"/>
         <property name="domainId" type="integer" column="rol_domain_id"/>
         <set name="permissions" table="role_permissions" lazy="false" cascade="all">
             <key column="rpe_role" not-null="true"/>

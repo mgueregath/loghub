@@ -15,15 +15,17 @@ public class Role extends MigratedEntity {
     private int id;
     private String name;
     private boolean deletable;
+    private boolean assignable;
     private Set<SecureMethod> permissions;
 
     public Role() {
     }
 
-    public Role(int domainId, String name, boolean deletable) {
+    public Role(int domainId, String name, boolean deletable, boolean assignable) {
         super(domainId);
         this.name = name;
         this.deletable = deletable;
+        this.assignable = assignable;
     }
 
     public Role(String name, boolean deletable) {
@@ -85,5 +87,19 @@ public class Role extends MigratedEntity {
      */
     public void setPermissions(Set<SecureMethod> permissions) {
         this.permissions = permissions;
+    }
+
+    /**
+     * @return the assignable
+     */
+    public boolean isAssignable() {
+        return assignable;
+    }
+
+    /**
+     * @param assignable the assignable to set
+     */
+    public void setAssignable(boolean assignable) {
+        this.assignable = assignable;
     }
 }

@@ -3,12 +3,17 @@
  */
 package io.codeffeine.starterkit.facade.container;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import io.codeffeine.starterkit.facade.environment.Environment;
 import io.codeffeine.starterkit.facade.migration.MigrationExecutor;
 import io.codeffeine.starterkit.facade.module.adapter.AdapterModule;
 import io.codeffeine.starterkit.facade.module.aspect.AspectModule;
+import io.codeffeine.starterkit.facade.module.environment.EnvironmentModule;
 import io.codeffeine.starterkit.facade.module.error.ErrorModule;
 import io.codeffeine.starterkit.facade.module.mailing.MailingModule;
 import io.codeffeine.starterkit.facade.module.migration.MigrationModule;
+import io.codeffeine.starterkit.facade.module.notification.NotificationModule;
 import io.codeffeine.starterkit.facade.module.persistence.PersistenceModule;
 import io.codeffeine.starterkit.facade.module.security.RoleModule;
 import io.codeffeine.starterkit.facade.module.security.SecurityModule;
@@ -22,9 +27,6 @@ import io.codeffeine.starterkit.facade.service.ServerService;
 import io.codeffeine.starterkit.facade.service.Services;
 import io.codeffeine.starterkit.facade.service.UserService;
 import io.codeffeine.starterkit.persistence.postgresql.PostgreSQLSession;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import io.codeffeine.starterkit.facade.module.notification.NotificationModule;
 
 /**
  *
@@ -33,9 +35,14 @@ import io.codeffeine.starterkit.facade.module.notification.NotificationModule;
 public class ServiceContainer {
 
     private final Injector injector;
+    private final Environment environment;
 
-    public ServiceContainer() {
+    public ServiceContainer(Environment environment) {
+
+        this.environment = environment;
+
         injector = Guice.createInjector(
+                new EnvironmentModule(environment),
                 new AdapterModule(),
                 new PersistenceModule(),
                 new SecurityModule(),

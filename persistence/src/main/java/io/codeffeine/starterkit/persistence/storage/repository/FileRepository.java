@@ -3,10 +3,10 @@
  */
 package io.codeffeine.starterkit.persistence.storage.repository;
 
+import io.codeffeine.starterkit.domain.adapter.Base64ConverterAdapter;
 import io.codeffeine.starterkit.domain.storage.repository.FileRepositoryInterface;
 import io.codeffeine.starterkit.persistence.storage.FileManager;
 import io.codeffeine.starterkit.persistence.storage.adapter.Base64Converter;
-import io.codeffeine.starterkit.persistence.storage.adapter.Base64ConverterAdapter;
 import java.io.File;
 
 /**

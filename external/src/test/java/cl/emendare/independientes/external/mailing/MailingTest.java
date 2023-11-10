@@ -30,7 +30,7 @@ public class MailingTest {
         email.setSubject("Correo de prueba");
         email.setTo("mgueregath@gmail.com");
         email.setContent("Correo de prueba");
-        Mailing instance = new Mailing();
+        Mailing instance = new Mailing(null);
         instance.send(email);
     }
 

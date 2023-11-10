@@ -3,18 +3,20 @@
  */
 package io.codeffeine.starterkit.external.mailing;
 
+import com.google.inject.Inject;
 import io.codeffeine.starterkit.domain.mailing.entity.Email;
 import io.codeffeine.starterkit.external.mailing.exceptions.MailingException;
+import io.codeffeine.starterkit.usecase.adapter.mailing.MailingAdapter;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import io.codeffeine.starterkit.usecase.adapter.mailing.MailingAdapter;
 
 /**
  *
@@ -23,32 +25,18 @@ import io.codeffeine.starterkit.usecase.adapter.mailing.MailingAdapter;
 public class Mailing implements MailingAdapter {
 
     private Properties props;
-    private String emailAddress;
-    private String name;
-    private String secret;
-    private String host;
-    private Integer port;
+    private MailingConfiguration mailingConfiguration;
 
-    public Mailing() {
+    @Inject
+    public Mailing(MailingConfiguration mailingConfiguration) {
         props = new Properties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", mailingConfiguration.getServer());
+        props.put("mail.smtp.port", mailingConfiguration.getPort());
+        props.put("mail.smtp.socketFactory.port", mailingConfiguration.getPort());
 
-        try {
-            emailAddress = MailingConfiguration.emailAddress;
-            name = MailingConfiguration.name;
-            secret = MailingConfiguration.secret;
-            host = MailingConfiguration.server;
-            port = MailingConfiguration.port;
-
-            props.put("mail.smtp.host", host);
-            props.put("mail.smtp.port", port);
-            props.put("mail.smtp.socketFactory.port", port);
-
-        } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.INFO, "Mailing", ex);
-        }
     }
 
     @Override
@@ -58,8 +46,8 @@ public class Mailing implements MailingAdapter {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(
-                        emailAddress,
-                        secret
+                        mailingConfiguration.getEmailAddress(),
+                        mailingConfiguration.getSecret()
                 );
             }
         }
@@ -67,15 +55,23 @@ public class Mailing implements MailingAdapter {
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(emailAddress, name));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email.getTo()));
+            message.setFrom(new InternetAddress(mailingConfiguration.getEmailAddress(), mailingConfiguration.getName()));
+            if (mailingConfiguration.isTesting()) {
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(email.getTo()));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress("development@mesias.io"));
+
+            } else {
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress("development@mesias.io"));
+
+            }
             message.setSubject(email.getSubject());
             message.setContent(email.getContent(), "text/html; charset=utf-8");
+            message.setSentDate(new Date());
 
             Transport.send(message);
 
-        } catch (Exception e) {
-            Logger.getAnonymousLogger().log(Level.INFO, "Mailing", e);
+        } catch (UnsupportedEncodingException | MessagingException e) {
+            e.printStackTrace();
             throw new MailingException();
         }
     }
