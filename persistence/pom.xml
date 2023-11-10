@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.codeffeine.starterkit</groupId>
-        <artifactId>starterkit</artifactId>
+        <groupId>io.codeffeine.brugge</groupId>
+        <artifactId>brugge</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>persistence</artifactId>
@@ -15,7 +15,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.codeffeine.starterkit</groupId>
+            <groupId>io.codeffeine.brugge</groupId>
             <artifactId>domain</artifactId>
         </dependency>
         <dependency>
@@ -59,11 +59,11 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <default.schema>starterkit</default.schema>
+                <default.schema>brugge</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName>192.168.1.26</dataSource.serverName>
                 <dataSource.portNumber>5432</dataSource.portNumber>
-                <dataSource.databaseName>starterkit</dataSource.databaseName>
+                <dataSource.databaseName>brugge</dataSource.databaseName>
                 <dataSource.user>postgres</dataSource.user>
                 <dataSource.password>cafeteraroja.</dataSource.password>
             </properties>
@@ -79,11 +79,11 @@
         <profile>
             <id>testing</id>
             <properties>
-                <default.schema>starterkit</default.schema>
+                <default.schema>brugge</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName></dataSource.serverName>
                 <dataSource.portNumber></dataSource.portNumber>
-                <dataSource.databaseName>starterkit</dataSource.databaseName>
+                <dataSource.databaseName>brugge</dataSource.databaseName>
                 <dataSource.user></dataSource.user>
                 <dataSource.password></dataSource.password>
             </properties>
@@ -99,11 +99,11 @@
         <profile>
             <id>production</id>
             <properties>
-                <default.schema>starterkit</default.schema>
+                <default.schema>brugge</default.schema>
                 <hbm2ddl.auto>update</hbm2ddl.auto>
                 <dataSource.serverName></dataSource.serverName>
                 <dataSource.portNumber></dataSource.portNumber>
-                <dataSource.databaseName>starterkit</dataSource.databaseName>
+                <dataSource.databaseName>brugge</dataSource.databaseName>
                 <dataSource.user></dataSource.user>
                 <dataSource.password></dataSource.password>
             </properties>

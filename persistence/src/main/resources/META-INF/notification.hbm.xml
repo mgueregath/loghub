@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="io.codeffeine.starterkit.domain.notification.entity">
+<hibernate-mapping package="io.codeffeine.brugge.domain.notification.entity">
     <class name="Notification" table="notification">
         <id name="id" type="long" column="not_id">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">

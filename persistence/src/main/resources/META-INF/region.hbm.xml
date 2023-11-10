@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="io.codeffeine.StarterKit.domain.entity">
+<hibernate-mapping package="io.codeffeine.Brugge Framework.domain.entity">
     <class name="Region" table="region">
         <id name="id" type="integer" column="reg_id">
             <generator class="assigned" />
