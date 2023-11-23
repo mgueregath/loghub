@@ -61,12 +61,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -97,19 +91,17 @@
         <profile>
             <id>testing</id>
             <properties>
-                <packaging.type>war</packaging.type>
+                <packaging.type>jar</packaging.type>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                    <version>1.5.2.RELEASE</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
         </profile>
         <profile>
             <id>production</id>
+            <properties>
+                <packaging.type>jar</packaging.type>
+            </properties>
+        </profile>
+        <profile>
+            <id>war</id>
             <properties>
                 <packaging.type>war</packaging.type>
             </properties>
@@ -121,6 +113,21 @@
                     <scope>provided</scope>
                 </dependency>
             </dependencies>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>3.2.0</version>
+                    </plugin>
+
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
