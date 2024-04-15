@@ -21,6 +21,7 @@ public class PostgreSQLSession {
         if (sessionFactory == null) {
             Configuration config = new Configuration().configure();
             if (!configuration.getDefaultValues()) {
+                config.setProperty("hibernate.default_schema", configuration.getSchema());
                 config.setProperty("hibernate.hikari.dataSource.serverName", configuration.getServerName());
                 config.setProperty("hibernate.hikari.dataSource.portNumber", configuration.getPort() + "");
                 config.setProperty("hibernate.hikari.dataSource.databaseName", configuration.getDatabaseName());

@@ -34,6 +34,8 @@ public class User extends MigratedEntity {
         this.password = password;
         this.email = email;
         this.role = role;
+        this.enabled = true;
+        this.accountRecovery = false;
     }
 
     /**
