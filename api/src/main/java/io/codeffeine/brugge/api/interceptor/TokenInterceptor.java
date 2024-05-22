@@ -6,8 +6,8 @@ package io.codeffeine.brugge.api.interceptor;
 import io.codeffeine.brugge.api.header.ResponseHeadersSetter;
 import io.codeffeine.brugge.domain.security.entity.User;
 import io.codeffeine.brugge.facade.container.ServiceContainer;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

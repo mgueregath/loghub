@@ -3,9 +3,10 @@
  */
 package io.codeffeine.brugge.usecase.adapter.jwt;
 
+import com.auth0.jwt.JWT;
 import io.codeffeine.brugge.usecase.exception.jwt.JwtGenerationException;
 import io.codeffeine.brugge.usecase.exception.jwt.JwtValidationException;
-import com.auth0.jwt.JWT;
+
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

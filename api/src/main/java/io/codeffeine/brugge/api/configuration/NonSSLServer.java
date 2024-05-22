@@ -6,10 +6,8 @@ package io.codeffeine.brugge.api.configuration;
 import io.codeffeine.brugge.api.props.ApplicationProps;
 import org.apache.catalina.connector.Connector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -17,25 +15,16 @@ import org.springframework.context.annotation.Configuration;
  * @author Mirko Gueregat @mgueregath <mgueregath@emendare.cl>
  */
 @Configuration
-public class NonSSLServer {
+public class NonSSLServer implements WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 
     @Autowired
     private ApplicationProps applicationProps;
 
-    @Bean
-    public EmbeddedServletContainerCustomizer containerCustomizer() {
-        return new EmbeddedServletContainerCustomizer() {
-            @Override
-            public void customize(ConfigurableEmbeddedServletContainer container) {
-                if (container instanceof TomcatEmbeddedServletContainerFactory) {
-                    TomcatEmbeddedServletContainerFactory containerFactory
-                            = (TomcatEmbeddedServletContainerFactory) container;
-
-                    Connector connector = new Connector(TomcatEmbeddedServletContainerFactory.DEFAULT_PROTOCOL);
-                    connector.setPort(applicationProps.getNonSslPort() != 0 ? applicationProps.getNonSslPort() : 8080);
-                    containerFactory.addAdditionalTomcatConnectors(connector);
-                }
-            }
-        };
+    @Override
+    public void customize(TomcatServletWebServerFactory factory) {
+        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+        connector.setPort(applicationProps.getNonSslPort() != 0 ? applicationProps.getNonSslPort() : 8080);
+        factory.addAdditionalTomcatConnectors(connector);
     }
+
 }

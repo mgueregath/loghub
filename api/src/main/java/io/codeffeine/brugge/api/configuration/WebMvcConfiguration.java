@@ -3,13 +3,13 @@
  */
 package io.codeffeine.brugge.api.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import io.codeffeine.brugge.api.interceptor.CorsInterceptor;
 import io.codeffeine.brugge.api.interceptor.OAuth2Interceptor;
 import io.codeffeine.brugge.api.interceptor.TokenInterceptor;
 import io.codeffeine.brugge.facade.container.ServiceContainer;
 import io.codeffeine.brugge.persistence.storage.StoragePath;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  *
@@ -30,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private ServiceContainer sc;
@@ -66,8 +66,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/documents/**")
                 .addResourceLocations("file:" + StoragePath.BASE_PATH + "/");
 
-        super.addResourceHandlers(registry);
-
     }
 
     @Override
@@ -77,7 +75,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         converter.setSupportedMediaTypes(Arrays.asList(mediaType));
         converters.add(converter);
         converters.add(jacksonMessageConverter());
-        super.configureMessageConverters(converters);
     }
 
     public MappingJackson2HttpMessageConverter jacksonMessageConverter() {

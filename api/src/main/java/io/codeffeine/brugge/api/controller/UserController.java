@@ -9,7 +9,7 @@ import io.codeffeine.brugge.api.command.SearchCommand;
 import io.codeffeine.brugge.api.configuration.PathConfiguration;
 import io.codeffeine.brugge.domain.security.entity.User;
 import io.codeffeine.brugge.facade.container.ServiceContainer;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

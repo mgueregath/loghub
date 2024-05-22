@@ -3,7 +3,7 @@
  */
 package io.codeffeine.brugge.api.header;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
