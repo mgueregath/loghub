@@ -11,6 +11,7 @@ import io.codeffeine.brugge.facade.module.adapter.AdapterModule;
 import io.codeffeine.brugge.facade.module.aspect.AspectModule;
 import io.codeffeine.brugge.facade.module.environment.EnvironmentModule;
 import io.codeffeine.brugge.facade.module.error.ErrorModule;
+import io.codeffeine.brugge.facade.module.logic.LogModule;
 import io.codeffeine.brugge.facade.module.mailing.MailingModule;
 import io.codeffeine.brugge.facade.module.migration.MigrationModule;
 import io.codeffeine.brugge.facade.module.notification.NotificationModule;
@@ -22,10 +23,12 @@ import io.codeffeine.brugge.facade.module.security.UserModule;
 import io.codeffeine.brugge.facade.module.server.UsageModule;
 import io.codeffeine.brugge.facade.permission.ServiceRegister;
 import io.codeffeine.brugge.facade.service.AuthenticationService;
+import io.codeffeine.brugge.facade.service.LogService;
 import io.codeffeine.brugge.facade.service.RoleService;
 import io.codeffeine.brugge.facade.service.ServerService;
 import io.codeffeine.brugge.facade.service.Services;
 import io.codeffeine.brugge.facade.service.UserService;
+import io.codeffeine.brugge.persistence.elastic.ElasticSession;
 import io.codeffeine.brugge.persistence.postgresql.PostgreSQLSession;
 
 /**
@@ -54,7 +57,8 @@ public class ServiceContainer {
                 new MailingModule(),
                 new UsageModule(),
                 new ErrorModule(),
-                new NotificationModule()
+                new NotificationModule(),
+                new LogModule()
         );
         onStart();
     }
@@ -63,6 +67,7 @@ public class ServiceContainer {
         injector.getInstance(PostgreSQLSession.class);
         injector.getInstance(MigrationExecutor.class).execute();
         injector.getInstance(ServiceRegister.class).registerServices();
+        injector.getInstance(ElasticSession.class);
     }
 
     public void onDestroy() {
@@ -87,5 +92,9 @@ public class ServiceContainer {
 
     public UserService getUserService() {
         return injector.getInstance(UserService.class);
+    }
+
+    public LogService getLogService() {
+        return injector.getInstance(LogService.class);
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="io.codeffeine.brugge.domain.entity">
+    <class name="Log" table="log">
+        <id name="id" type="long" column="log_id">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">log_sequence</param>
+            </generator>
+        </id>
+        <property name="reason" type="string" column="log_reason" />
+        <property name="details" type="string" column="log_details" />
+        <property name="date" type="timestamp" column="log_date" />
+        <many-to-one name="system" column="log_system" class="System" lazy="false" fetch="select" cascade="merge"/>
+        <many-to-one name="logType" column="log_log_type" class="LogType" lazy="false" fetch="select" />
+    </class>
+</hibernate-mapping>

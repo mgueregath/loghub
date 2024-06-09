@@ -5,6 +5,7 @@ package io.codeffeine.brugge.facade.environment;
 
 import io.codeffeine.brugge.external.mailing.MailingConfiguration;
 import io.codeffeine.brugge.facade.security.AuthServerConfiguration;
+import io.codeffeine.brugge.persistence.elastic.configuration.ElasticConfiguration;
 import io.codeffeine.brugge.persistence.postgresql.configuration.DatabaseConfiguration;
 
 /**
@@ -16,6 +17,7 @@ public class Environment {
     private DatabaseConfiguration database;
     private MailingConfiguration smtpMailing;
     private AuthServerConfiguration authConfiguration;
+    private ElasticConfiguration elastic;
 
     /**
      * @return the database
@@ -57,5 +59,19 @@ public class Environment {
      */
     public void setAuthConfiguration(AuthServerConfiguration authConfiguration) {
         this.authConfiguration = authConfiguration;
+    }
+
+    /**
+     * @return the elastic
+     */
+    public ElasticConfiguration getElastic() {
+        return elastic;
+    }
+
+    /**
+     * @param elastic the elastic to set
+     */
+    public void setElastic(ElasticConfiguration elastic) {
+        this.elastic = elastic;
     }
 }

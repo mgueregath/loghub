@@ -7,6 +7,7 @@ import io.codeffeine.brugge.domain.storage.repository.FileRepositoryInterface;
 import io.codeffeine.brugge.persistence.postgresql.PostgreSQLSession;
 import io.codeffeine.brugge.persistence.storage.repository.FileRepository;
 import com.google.inject.AbstractModule;
+import io.codeffeine.brugge.persistence.elastic.ElasticSession;
 
 /**
  *
@@ -18,5 +19,7 @@ public class PersistenceModule extends AbstractModule {
     protected void configure() {
         bind(PostgreSQLSession.class);
         bind(FileRepositoryInterface.class).to(FileRepository.class);
+
+        bind(ElasticSession.class);
     }
 }

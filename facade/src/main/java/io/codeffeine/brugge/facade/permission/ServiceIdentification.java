@@ -21,6 +21,7 @@ public class ServiceIdentification {
     public static final int ROLES = 5;
     public static final int USERS = 6;
     public static final int SERVER = 7;
+    public static final int LOGS = 8;
 
     private static final List<Service> services;
 
@@ -33,6 +34,7 @@ public class ServiceIdentification {
         services.add(new Service(ROLES, "Roles"));
         services.add(new Service(USERS, "Usuarios"));
         services.add(new Service(SERVER, "Servidor"));
+        services.add(new Service(LOGS, "Logs"));
     }
 
     private ServiceIdentification() {

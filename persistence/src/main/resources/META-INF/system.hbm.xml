@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="io.codeffeine.brugge.domain.entity">
+    <class name="System" table="system">
+        <id name="id" type="int" column="sys_id">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence_name">system_sequence</param>
+            </generator>
+        </id>
+        <property name="name" type="string" column="sys_name" />
+        <property name="key" type="string" column="sys_key" />
+        <property name="created" type="timestamp" column="sys_created" />
+        <property name="ip" type="integer" column="sys_ip" />
+    </class>
+</hibernate-mapping>
